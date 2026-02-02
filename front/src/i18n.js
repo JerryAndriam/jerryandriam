@@ -121,7 +121,7 @@ const messages = {
         uiuxdesign: "UI/UX Design",
         webapp: "Site web",
         premedicaBrief: "Application web intelligente de gestion de rendez-vous médical pour les établissements de santé",
-        premedicaDesc: "Premedica est une application web permettant aux établissements de santé de mieux gérer les rendez-vous entre docteur et patient grâce à questionnaires préalables et rapports :",
+        premedicaDesc: "Premedica est une application web permettant aux établissements de santé de mieux gérer les rendez-vous entre docteur et patient grâce à des questionnaires préalables et rapports",
         premedicaEntityFeature: "Gestion des entités travaillant dans l'établissement",
         premedicaAppointmenFeature: "Gestion des rendez-vous entre docteur-patient",
         premedicaReportFeature: "Gestion de questionnaire, de réponse et rapport préconsultatifs",
