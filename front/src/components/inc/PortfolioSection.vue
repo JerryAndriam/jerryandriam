@@ -466,7 +466,7 @@ const websitePortfolios = [
         overview: premedicaHome, 
         briefing: 'premedicaBrief', 
         stack: "Nuxt JS, Laravel, MySQL",
-        description: "mptimeDesc",
+        description: "premedicaDesc",
         galleries: [
             premedicaDashboardDoctor,
             premedicaPartner,
