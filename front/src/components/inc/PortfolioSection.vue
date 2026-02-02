@@ -317,6 +317,16 @@ import Tab from 'primevue/tab';
 import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
 
+import premedicaHome from "../../assets/images/portfolio/premedica/home.png";
+import premedicaDashboardDoctor from "../../assets/images/portfolio/premedica/dashboard-doctor.png";
+import premedicaPartner from "../../assets/images/portfolio/premedica/partner.png";
+import premedicaNewQuestionnaire from "../../assets/images/portfolio/premedica/new-questionnaire.png";
+import premedicaSendQuestionnaire from "../../assets/images/portfolio/premedica/send-questionnaire.png";
+import premedicaAgenda from "../../assets/images/portfolio/premedica/agenda.png";
+import premedicaDashboardAdmin from "../../assets/images/portfolio/premedica/dashboard-admin.png";
+import premedicaUsers from "../../assets/images/portfolio/premedica/users.png";
+import premedicaProfile from "../../assets/images/portfolio/premedica/profile.png";
+
 import mptimeRegister from "../../assets/images/portfolio/mp-time/register.png";
 import mptimeLogin from "../../assets/images/portfolio/mp-time/login.png";
 import mptimeTimesheet from "../../assets/images/portfolio/mp-time/timesheet.png";
@@ -452,6 +462,29 @@ const handleCloseGalleryDialog = () => {
 const websitePortfolios = [
     {
         id: 1,
+        title: 'PREMEDICA',
+        overview: premedicaHome, 
+        briefing: 'premedicaBrief', 
+        stack: "Nuxt JS, Laravel, MySQL",
+        description: "mptimeDesc",
+        galleries: [
+            premedicaDashboardDoctor,
+            premedicaPartner,
+            premedicaNewQuestionnaire,
+            premedicaSendQuestionnaire,
+            premedicaAgenda,
+            premedicaDashboardAdmin,
+            premedicaUsers,
+            premedicaProfile,
+        ],
+        features: [
+            "premedicaEntityFeature",
+            "premedicaAppointmenFeature",
+            "premedicaReportFeature"
+        ]
+    },
+    {
+        id: 2,
         title: 'MP-TIME',
         overview: mptimeRegister, 
         briefing: 'mptimeBrief', 
@@ -474,7 +507,7 @@ const websitePortfolios = [
         ]
     },
     {
-        id: 2,
+        id: 3,
         title: 'INFISWAP',
         overview: infiswapHome, 
         briefing: 'infiswapBrief', 
@@ -499,7 +532,7 @@ const websitePortfolios = [
         ]
     },
     {
-        id: 3,
+        id: 4,
         title: 'INSTAGE',
         overview: instageHome, 
         briefing: 'instageBrief', 
@@ -523,7 +556,7 @@ const websitePortfolios = [
         ]
     },
     {
-        id: 4,
+        id: 5,
         title: 'EVENTURE',
         overview: eventureHome, 
         briefing: 'eventureBrief',
@@ -547,7 +580,7 @@ const websitePortfolios = [
         ]
     },
     {
-        id: 5,
+        id: 6,
         title: 'OMEGA CONNECT',
         overview: omegaHome, 
         briefing: 'omegaBrief',
@@ -570,7 +603,7 @@ const websitePortfolios = [
         ]
     },
     {
-        id: 6,
+        id: 7,
         title: 'ESPRIT AUDIO',
         overview: espritHome, 
         briefing: 'espritBrief',
