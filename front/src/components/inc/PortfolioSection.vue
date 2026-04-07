@@ -1,321 +1,316 @@
 <template>
-    <div class="px-8 lg:px-12 2xl:px-52">
-        <h2 
-            class="font-varela text-center font-light text-xl"
-            :class="{
-                'text-blue-400': checked,
-                'text-blue-700/70': !checked
-            }"
-        >
-            PORTFOLIOS
-        </h2>
-  
-        <div class="mt-10">
-            <Tabs 
-                value="0"
-                class="rounded-lg bg-transparent"
-                style="--p-tabs-tablist-background: transparent"
-            >
-                <TabList
-                    class="bg-transparent"
-                    :pt="{
-                        content: 'grid grid-cols-2 bg-transparent mb-8',
-                        activeBar: checked ? 'bg-blue-400' : 'bg-blue-700/70'
-                    }"
-                >
-                    <Tab 
-                        value="0" 
-                        class="w-full text-lg rounded-lg py-3 font-semibold"
-                    >
-                        {{ t('webapp') }}
-                    </Tab>
-                    <Tab 
-                        value="1" 
-                        class="w-full text-lg rounded-lg py-3 font-semibold"
-                    >
-                        {{ t('uiuxdesign') }}
-                    </Tab>
-                </TabList>
+	<div class="px-8 lg:px-12 2xl:px-52">
+		<h2
+			class="font-varela text-center font-light text-xl"
+			:class="{
+				'text-blue-400': checked,
+				'text-blue-700/70': !checked,
+			}"
+		>
+			PORTFOLIOS
+		</h2>
 
-                <TabPanels class="bg-transparent">
-                    <TabPanel value="0">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-stretch">
-                            <div 
-                                v-for="portfolio in websitePortfolios"
-                                :key="portfolio.id"
-                                class="p-8 shadow rounded-lg group transition-all duration-300 ease-in-out cursor-pointer"
-                                :class="{
-                                    'bg-gray-600': checked,
-                                    'bg-white': !checked
-                                }"
-                                @click="handleShowDetail(portfolio)"
-                            >
-                                <div 
-                                    class="overflow-hidden p-6 flex justify-center"
-                                    :class="{
-                                        'bg-blue-400': checked,
-                                        'bg-blue-700/40': !checked
-                                    }"
-                                >
-                                    <img 
-                                    :src="portfolio.overview" 
-                                    class="transition-transform duration-300 ease-in-out group-hover:scale-105"
-                                    />
-                                </div>
-                    
-                                <div class="mt-5 flex flex-col space-y-3">
-                                    <h4 
-                                        class="font-varela text-md"
-                                        :class="{
-                                            'text-blue-400': checked,
-                                            'text-blue-700': !checked
-                                        }"
-                                    >
-                                    {{ portfolio.title }}
-                                    </h4>
-                    
-                                    <p 
-                                        class="text-xl font-semibold transition-all duration-300 ease-in-out flex items-center justify-between"
-                                        :class="{
-                                            'text-white group-hover:text-blue-400': checked,
-                                            'text-gray-800 group-hover:text-blue-700': !checked,
-                                        }"
-                                    >
-                                        {{ t(portfolio.briefing) }}
-                                        <i class="pi pi-arrow-up-right text-lg opacity-0 translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0" />
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </TabPanel>
+		<div class="mt-10">
+			<Tabs
+				value="0"
+				class="rounded-lg bg-transparent"
+				style="--p-tabs-tablist-background: transparent"
+			>
+				<TabList
+					class="bg-transparent"
+					:pt="{
+						content: 'grid grid-cols-2 bg-transparent mb-8',
+						activeBar: checked ? 'bg-blue-400' : 'bg-blue-700/70',
+					}"
+				>
+					<Tab value="0" class="w-full text-lg rounded-lg py-3 font-semibold">
+						{{ t("webapp") }}
+					</Tab>
+					<Tab value="1" class="w-full text-lg rounded-lg py-3 font-semibold">
+						{{ t("uiuxdesign") }}
+					</Tab>
+				</TabList>
 
-                    <TabPanel value="1">
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-stretch">
-                            <div 
-                                v-for="portfolio in designPortfolios"
-                                :key="portfolio.id"
-                                class="p-8 shadow rounded-lg group transition-all duration-300 ease-in-out cursor-pointer"
-                                :class="{
-                                    'bg-gray-600': checked,
-                                    'bg-white': !checked
-                                }"
-                                @click="handleShowDetail(portfolio)"
-                            >
-                                <div 
-                                    class="overflow-hidden p-6 flex justify-center"
-                                    :class="{
-                                        'bg-blue-400': checked,
-                                        'bg-blue-700/40': !checked
-                                    }"
-                                >
-                                    <img 
-                                    :src="portfolio.overview" 
-                                    class="transition-transform object-contain h-36 duration-300 ease-in-out group-hover:scale-105"
-                                    />
-                                </div>
-                    
-                                <div class="mt-5 flex flex-col space-y-3">
-                                    <h4 
-                                        class="font-varela text-md"
-                                        :class="{
-                                            'text-blue-400': checked,
-                                            'text-blue-700': !checked
-                                        }"
-                                    >
-                                    {{ portfolio.title }}
-                                    </h4>
-                    
-                                    <p 
-                                        class="text-xl font-semibold transition-all duration-300 ease-in-out flex items-center justify-between"
-                                        :class="{
-                                            'text-white group-hover:text-blue-400': checked,
-                                            'text-gray-800 group-hover:text-blue-700': !checked,
-                                        }"
-                                    >
-                                        {{ t(portfolio.briefing) }}
-                                        <i class="pi pi-arrow-up-right text-lg opacity-0 translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0" />
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </TabPanel>
-                </TabPanels>
-            </Tabs>
-        </div>
-        
-        <Dialog
-            v-model:visible="detailPortfolioDialog"
-            header="Détail"
-            modal
-            class="w-[85vw] lg:w-[60vw] !overflow-y-auto lg:!overflow-hidden !lg:h-[28rem] py-2 px-8 pb-16"
-            :class="{
-                '!bg-gray-700 !text-white': checked,
-                '!bg-white !text-black': !checked,
-            }"
-            :pt="{
-                content: '!overflow-y-auto lg:!overflow-hidden !h-96',
-                footer: '!h-8',
-                pcCloseButton: '!outline-none hover:!text-blue-700/70',
-            }"
-        >
-            <div class="my-6 h-full grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                    <div 
-                        class="overflow-hidden h-40 lg:h-auto p-6 flex justify-center"
-                        :class="{
-                            '!bg-blue-400': checked,
-                            '!bg-blue-700/40': !checked,
-                        }"
-                    >
-                        <img 
-                            :src="selectedPortfolio.overview" 
-                            class="h-24 object-cover"
-                        />
-                    </div>
+				<TabPanels class="bg-transparent">
+					<TabPanel value="0">
+						<div
+							class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-stretch"
+						>
+							<div
+								v-for="portfolio in websitePortfolios"
+								:key="portfolio.id"
+								class="p-8 shadow rounded-lg group transition-all duration-300 ease-in-out cursor-pointer"
+								:class="{
+									'bg-gray-600': checked,
+									'bg-white': !checked,
+								}"
+								@click="handleShowDetail(portfolio)"
+							>
+								<div
+									class="overflow-hidden p-6 flex justify-center"
+									:class="{
+										'bg-blue-400': checked,
+										'bg-blue-700/40': !checked,
+									}"
+								>
+									<img
+										:src="portfolio.overview"
+										class="transition-transform duration-300 ease-in-out group-hover:scale-105"
+									/>
+								</div>
 
-                    <div class="mt-6 grid grid-cols-3 sm:grid-cols-4 gap-4">
-                        <div 
-                            v-for="(image, idx) in selectedPortfolio.galleries" 
-                            :key="idx"
-                            class="relative cursor-pointer"
-                            @click="openGallery(idx)"
-                        >
-                            <img 
-                                :src="image" 
-                                class="w-full h-20 sm:h-24 object-cover rounded shadow"
-                            />
-                        </div>
-                    </div>
-                </div>
+								<div class="mt-5 flex flex-col space-y-3">
+									<h4
+										class="font-varela text-md"
+										:class="{
+											'text-blue-400': checked,
+											'text-blue-700': !checked,
+										}"
+									>
+										{{ portfolio.title }}
+									</h4>
 
-                <div>
-                    <h4 
-                        class="font-varela text-md"
-                        :class="{
-                            '!text-blue-400': checked,
-                            '!text-blue-700': !checked
-                        }"
-                    >
-                        {{ selectedPortfolio.title }}
-                    </h4>
-                    <p class="font-semibold">
-                        {{ selectedPortfolio.stack }} 
-                    </p>
+									<p
+										class="text-xl font-semibold transition-all duration-300 ease-in-out flex items-center justify-between"
+										:class="{
+											'text-white group-hover:text-blue-400': checked,
+											'text-gray-800 group-hover:text-blue-700': !checked,
+										}"
+									>
+										{{ t(portfolio.briefing) }}
+										<i
+											class="pi pi-arrow-up-right text-lg opacity-0 translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0"
+										/>
+									</p>
+								</div>
+							</div>
+						</div>
+					</TabPanel>
 
-                    <p class="mt-6">
-                        {{ t(selectedPortfolio.description) }} :
-                    </p>
+					<TabPanel value="1">
+						<div
+							class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 items-stretch"
+						>
+							<div
+								v-for="portfolio in designPortfolios"
+								:key="portfolio.id"
+								class="p-8 shadow rounded-lg group transition-all duration-300 ease-in-out cursor-pointer"
+								:class="{
+									'bg-gray-600': checked,
+									'bg-white': !checked,
+								}"
+								@click="handleShowDetail(portfolio)"
+							>
+								<div
+									class="overflow-hidden p-6 flex justify-center"
+									:class="{
+										'bg-blue-400': checked,
+										'bg-blue-700/40': !checked,
+									}"
+								>
+									<img
+										:src="portfolio.overview"
+										class="transition-transform object-contain h-36 duration-300 ease-in-out group-hover:scale-105"
+									/>
+								</div>
 
-                    <div class="mt-4 ml-4">
-                        <ul>
-                            <li
-                                v-for="feature in selectedPortfolio.features"
-                                :key="feature"
-                                class="list-disc"
-                            >   
-                                {{ t(feature) }}
-                            </li>
-                        </ul>
-                    </div>
+								<div class="mt-5 flex flex-col space-y-3">
+									<h4
+										class="font-varela text-md"
+										:class="{
+											'text-blue-400': checked,
+											'text-blue-700': !checked,
+										}"
+									>
+										{{ portfolio.title }}
+									</h4>
 
-                    <div class="mt-4 flex space-x-4">
-                        <Button
-                            v-if="selectedPortfolio.github" 
-                            as="a"
-                            :href="selectedPortfolio.github"
-                            target="_blank" 
-                            rel="noopener"
-                            icon="pi pi-github"
-                            :label="t('visitGithub')"
-                            class="text-white py-2 w-64"
-                            :class="{
-                                '!bg-gray-600': checked,
-                                '!bg-gray-700': !checked,
-                            }"  
-                        />
-                        <Button
-                            v-if="selectedPortfolio.website" 
-                            as="a"
-                            :href="selectedPortfolio.website"
-                            target="_blank" 
-                            rel="noopener"
-                            icon="pi pi-globe"
-                            :label="t('visitWebsite')"
-                            class=" text-white py-2 w-64"
-                            :class="{
-                                '!bg-blue-400': checked,
-                                '!bg-blue-700/70': !checked,
-                            }"
-                        />
-                    </div>
-                </div>
-            </div>
-        </Dialog>
+									<p
+										class="text-xl font-semibold transition-all duration-300 ease-in-out flex items-center justify-between"
+										:class="{
+											'text-white group-hover:text-blue-400': checked,
+											'text-gray-800 group-hover:text-blue-700': !checked,
+										}"
+									>
+										{{ t(portfolio.briefing) }}
+										<i
+											class="pi pi-arrow-up-right text-lg opacity-0 translate-x-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-x-0"
+										/>
+									</p>
+								</div>
+							</div>
+						</div>
+					</TabPanel>
+				</TabPanels>
+			</Tabs>
+		</div>
 
-        <Dialog
-            v-model:visible="galleryDialog"
-            header="Galerie"
-            modal
-            v-on:hide="handleCloseGalleryDialog"
-            class="w-[90vw] lg:w-[60vw]"
-            :class="{
-                '!bg-gray-700 !text-white': checked,
-                '!bg-white !text-black': !checked,
-            }"
-            :pt="{
-                content: 'overflow-hidden !h-96',
-                header: 'py-4 px-8',
-                footer: '!h-8',
-                pcCloseButton: '!outline-none hover:!text-blue-700/70',
-            }"
-        >
-            <div class="flex justify-center">
-                <img 
-                    :src="selectedPortfolio.galleries[currentImage]" 
-                    class="max-h-[50vh] object-contain"
-                />
-            </div>
+		<Dialog
+			v-model:visible="detailPortfolioDialog"
+			header="Détail"
+			modal
+			class="w-[85vw] lg:w-[60vw] !overflow-y-auto lg:!overflow-hidden !lg:h-[28rem] py-2 px-8 pb-16"
+			:class="{
+				'!bg-gray-700 !text-white': checked,
+				'!bg-white !text-black': !checked,
+			}"
+			:pt="{
+				content: '!overflow-y-auto lg:!overflow-hidden !h-96',
+				footer: '!h-8',
+				pcCloseButton: '!outline-none hover:!text-blue-700/70',
+			}"
+		>
+			<div class="my-6 h-full grid grid-cols-1 lg:grid-cols-2 gap-12">
+				<div>
+					<div
+						class="overflow-hidden h-40 lg:h-auto p-6 flex justify-center"
+						:class="{
+							'!bg-blue-400': checked,
+							'!bg-blue-700/40': !checked,
+						}"
+					>
+						<img :src="selectedPortfolio.overview" class="h-24 object-cover" />
+					</div>
 
-            <template #footer>
-                <div class="flex justify-between w-full px-8 -mt-8">
-                    <Button 
-                        icon="pi pi-chevron-left"
-                        class="h-8 rounded-full w-8"
-                        :class="{
-                            'bg-blue-400 disabled:bg-blue-400/20': checked,
-                            'bg-blue-700/60 disabled:bg-blue-700/20 text-white': !checked
-                        }"
-                        @click="prevImage"
-                        :disabled="currentImage === 0"
-                    />
-                    <Button 
-                        icon="pi pi-chevron-right"
-                        class="h-8 rounded-full w-8"
-                        :class="{
-                            'bg-blue-400 disabled:bg-blue-400/20': checked,
-                            'bg-blue-700/60 disabled:bg-blue-700/20 text-white': !checked
-                        }"
-                        @click="nextImage"
-                        :disabled="currentImage === selectedPortfolio.galleries.length - 1"
-                    />
-                </div>
-            </template>
-        </Dialog>
+					<div class="mt-6 grid grid-cols-3 sm:grid-cols-4 gap-4">
+						<div
+							v-for="(image, idx) in selectedPortfolio.galleries"
+							:key="idx"
+							class="relative cursor-pointer"
+							@click="openGallery(idx)"
+						>
+							<img
+								:src="image"
+								class="w-full h-20 sm:h-24 object-cover rounded shadow"
+							/>
+						</div>
+					</div>
+				</div>
 
-    </div>
+				<div>
+					<h4
+						class="font-varela text-md"
+						:class="{
+							'!text-blue-400': checked,
+							'!text-blue-700': !checked,
+						}"
+					>
+						{{ selectedPortfolio.title }}
+					</h4>
+					<p class="font-semibold">
+						{{ selectedPortfolio.stack }}
+					</p>
+
+					<p class="mt-6">{{ t(selectedPortfolio.description) }} :</p>
+
+					<div class="mt-4 ml-4">
+						<ul>
+							<li
+								v-for="feature in selectedPortfolio.features"
+								:key="feature"
+								class="list-disc"
+							>
+								{{ t(feature) }}
+							</li>
+						</ul>
+					</div>
+
+					<div class="mt-4 flex flex-col space-y-4">
+						<Button
+							v-if="selectedPortfolio.github"
+							as="a"
+							:href="selectedPortfolio.github"
+							target="_blank"
+							rel="noopener"
+							icon="pi pi-github"
+							:label="t('visitGithub')"
+							class="text-white py-2 w-64"
+							:class="{
+								'!bg-gray-600': checked,
+								'!bg-gray-700': !checked,
+							}"
+						/>
+						<Button
+							v-if="selectedPortfolio.website"
+							as="a"
+							:href="selectedPortfolio.website"
+							target="_blank"
+							rel="noopener"
+							icon="pi pi-globe"
+							:label="t('visitWebsite')"
+							class="text-white py-2 w-64"
+							:class="{
+								'!bg-blue-400': checked,
+								'!bg-blue-700/70': !checked,
+							}"
+						/>
+					</div>
+				</div>
+			</div>
+		</Dialog>
+
+		<Dialog
+			v-model:visible="galleryDialog"
+			header="Galerie"
+			modal
+			v-on:hide="handleCloseGalleryDialog"
+			class="w-[90vw] lg:w-[60vw]"
+			:class="{
+				'!bg-gray-700 !text-white': checked,
+				'!bg-white !text-black': !checked,
+			}"
+			:pt="{
+				content: 'overflow-hidden !h-96',
+				header: 'py-4 px-8',
+				footer: '!h-8',
+				pcCloseButton: '!outline-none hover:!text-blue-700/70',
+			}"
+		>
+			<div class="flex justify-center">
+				<img
+					:src="selectedPortfolio.galleries[currentImage]"
+					class="max-h-[50vh] object-contain"
+				/>
+			</div>
+
+			<template #footer>
+				<div class="flex justify-between w-full px-8 -mt-8">
+					<Button
+						icon="pi pi-chevron-left"
+						class="h-8 rounded-full w-8"
+						:class="{
+							'bg-blue-400 disabled:bg-blue-400/20': checked,
+							'bg-blue-700/60 disabled:bg-blue-700/20 text-white': !checked,
+						}"
+						@click="prevImage"
+						:disabled="currentImage === 0"
+					/>
+					<Button
+						icon="pi pi-chevron-right"
+						class="h-8 rounded-full w-8"
+						:class="{
+							'bg-blue-400 disabled:bg-blue-400/20': checked,
+							'bg-blue-700/60 disabled:bg-blue-700/20 text-white': !checked,
+						}"
+						@click="nextImage"
+						:disabled="currentImage === selectedPortfolio.galleries.length - 1"
+					/>
+				</div>
+			</template>
+		</Dialog>
+	</div>
 </template>
-  
 
 <script setup>
-import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import Dialog from 'primevue/dialog';
-import Button from 'primevue/button';
-import Tabs from 'primevue/tabs';
-import TabList from 'primevue/tablist';
-import Tab from 'primevue/tab';
-import TabPanels from 'primevue/tabpanels';
-import TabPanel from 'primevue/tabpanel';
+import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+import Dialog from "primevue/dialog";
+import Button from "primevue/button";
+import Tabs from "primevue/tabs";
+import TabList from "primevue/tablist";
+import Tab from "primevue/tab";
+import TabPanels from "primevue/tabpanels";
+import TabPanel from "primevue/tabpanel";
 
 import premedicaHome from "../../assets/images/portfolio/premedica/home.png";
 import premedicaDashboardDoctor from "../../assets/images/portfolio/premedica/dashboard-doctor.png";
@@ -356,6 +351,16 @@ import instageDashboardSupervisor from "../../assets/images/portfolio/instage/da
 import instageFollowUp from "../../assets/images/portfolio/instage/follow-up.png";
 import instageDashboardAdmin from "../../assets/images/portfolio/instage/dashboard-admin.png";
 import instageListUsers from "../../assets/images/portfolio/instage/list-users.png";
+
+import circusHome from "../../assets/images/portfolio/circus/home.png";
+import circusLogin from "../../assets/images/portfolio/circus/login.png";
+import circusAbout from "../../assets/images/portfolio/circus/about.png";
+import circusContact from "../../assets/images/portfolio/circus/contact.png";
+import circusRegister from "../../assets/images/portfolio/circus/register.png";
+import circusListTrip from "../../assets/images/portfolio/circus/list-trip.png";
+import circusProfilePassenger from "../../assets/images/portfolio/circus/profile-passenger.png";
+import circusDashboardDriver from "../../assets/images/portfolio/circus/dashboard-driver.png";
+import circusSettingDriver from "../../assets/images/portfolio/circus/setting-driver.png";
 
 import eventureHome from "../../assets/images/portfolio/eventure/home.png";
 import eventureLogin from "../../assets/images/portfolio/eventure/login.png";
@@ -419,278 +424,287 @@ import aftripProfile from "../../assets/images/design/aftrip/user-profile.png";
 const { t } = useI18n();
 
 const props = defineProps({
-    checked: Boolean,
+	checked: Boolean,
 });
 
 const detailPortfolioDialog = ref(false);
 const selectedPortfolio = ref({});
 
 const handleShowDetail = (portfolio) => {
-    selectedPortfolio.value = portfolio;
-    detailPortfolioDialog.value = true;
+	selectedPortfolio.value = portfolio;
+	detailPortfolioDialog.value = true;
 };
 
 const galleryDialog = ref(false);
 const currentImage = ref(0);
 
 const openGallery = (index) => {
-    currentImage.value = index;
-    detailPortfolioDialog.value = false;
-    galleryDialog.value = true;
+	currentImage.value = index;
+	detailPortfolioDialog.value = false;
+	galleryDialog.value = true;
 };
 
 const nextImage = () => {
-    if (
-        selectedPortfolio.value?.galleries &&
-        currentImage.value < selectedPortfolio.value.galleries.length - 1
-    ) {
-        currentImage.value++;
-    }
+	if (
+		selectedPortfolio.value?.galleries &&
+		currentImage.value < selectedPortfolio.value.galleries.length - 1
+	) {
+		currentImage.value++;
+	}
 };
 
 const prevImage = () => {
-    if (currentImage.value > 0) {
-        currentImage.value--;
-    }
+	if (currentImage.value > 0) {
+		currentImage.value--;
+	}
 };
 
 const handleCloseGalleryDialog = () => {
-    galleryDialog.value = false;
-    detailPortfolioDialog.value = true;
+	galleryDialog.value = false;
+	detailPortfolioDialog.value = true;
 };
 
 const websitePortfolios = [
-    {
-        id: 1,
-        title: 'PREMEDICA',
-        overview: premedicaHome, 
-        briefing: 'premedicaBrief', 
-        stack: "Nuxt JS, Laravel, MySQL",
-        description: "premedicaDesc",
-        galleries: [
-            premedicaDashboardDoctor,
-            premedicaPartner,
-            premedicaNewQuestionnaire,
-            premedicaSendQuestionnaire,
-            premedicaAgenda,
-            premedicaDashboardAdmin,
-            premedicaUsers,
-            premedicaProfile,
-        ],
-        features: [
-            "premedicaEntityFeature",
-            "premedicaAppointmenFeature",
-            "premedicaReportFeature"
-        ]
-    },
-    {
-        id: 2,
-        title: 'MP-TIME',
-        overview: mptimeRegister, 
-        briefing: 'mptimeBrief', 
-        stack: "Vue JS, Symfony, MySQL",
-        description: "mptimeDesc",
-        galleries: [
-            mptimeLogin,
-            mptimeTimesheet,
-            mptimeProfile,
-            mptimeImport,
-            mptimeAdmin,
-            mptimeUsers,
-            mptimeCreateOrder,
-            mptimeCreateCompany,
-        ],
-        features: [
-            "mptimeTimesheetFeature",
-            "mptimeTrackingFeature",
-            "mptimeCompanyFeature"
-        ]
-    },
-    {
-        id: 3,
-        title: 'INFISWAP',
-        overview: infiswapHome, 
-        briefing: 'infiswapBrief', 
-        stack: "Nuxt, Laravel, MySQL",
-        description: "infiswapDesc",
-        website: "http://infiswap.be/",
-        galleries: [
-            infiswapLogin,
-            infiswapDashboardNurse,
-            infiswapCreateReplacement,
-            infiswapBinomial,
-            infiswapSetting,
-            infiswapDetailReplacement,
-            infiswapDashboardAdmin,
-            infiswapCrm,
-        ],
-        features: [
-            'infiswapReplacementFeature',
-            'infiswapPartnershipFeature',
-            'infiswapNurseFeature',
-            'infiswapResponseFeature'
-        ]
-    },
-    {
-        id: 4,
-        title: 'INSTAGE',
-        overview: instageHome, 
-        briefing: 'instageBrief', 
-        stack: "React, Django, MySQL",
-        description: "instageDesc",
-        github: "https://github.com/Tantely004/instage.git",
-        galleries: [
-            instageLogin,
-            instageDashboardIntern,
-            instageGenerateTheme,
-            instageInternship,
-            instageDashboardSupervisor,
-            instageFollowUp,
-            instageDashboardAdmin,
-            instageListUsers,
-        ],
-        features: [
-            'instageInternshipFeature',
-            'instageTrackingProject',
-            'instageAiAssistant',
-        ]
-    },
-    {
-        id: 5,
-        title: 'EVENTURE',
-        overview: eventureHome, 
-        briefing: 'eventureBrief',
-        stack: "React, Django, PostgreSQL",
-        description: "eventureDesc",
-        github: 'https://github.com/NinoMichael/eventure.git',
-        galleries: [
-            eventureLogin,
-            eventureRegister,
-            eventureDashboard,
-            eventureProfile,
-            eventureDashboardAdmin,
-            eventureListAudience,
-            eventurePublish,
-            eventureChat,
-        ],
-        features: [
-            'eventureEventOrganization',
-            'eventureEventParticipate',
-            'eventureEventTracking',
-        ]
-    },
-    {
-        id: 6,
-        title: 'OMEGA CONNECT',
-        overview: omegaHome, 
-        briefing: 'omegaBrief',
-        stack: "JavaScript, PHP",
-        description: "omegaDesc",
-        website: 'https://www.omega-connect.com/',
-        galleries: [
-            omegaCollectData,
-            omegaContact,
-            omegaFicheProduct,
-            omegaAiValidator,
-            omegaRelaunchPhone,
-            omegaSeo,
-            omegaSupport,
-            omegaTypeProject,
-        ],
-        features: [
-            'omegaExternService',
-            'omegaAiAssistance',
-        ]
-    },
-    {
-        id: 7,
-        title: 'ESPRIT AUDIO',
-        overview: espritHome, 
-        briefing: 'espritBrief',
-        stack: "JavaScript, PHP",
-        description: "espritDesc",
-        website: 'https://www.esprit-audio.fr/',
-        galleries: [
-            espritContact,
-            espritAbout,
-            espritAcoustics,
-            espritAlphaCable,
-            espritEsprit,
-            espritLisa,
-            espritProAccess,
-            espritReview,
-        ],
-        features: [
-            'espritCableSale',
-            'espritEnhanceExp',
-        ]
-    }
+	{
+		id: 1,
+		title: "PREMEDICA",
+		overview: premedicaHome,
+		briefing: "premedicaBrief",
+		stack: "Nuxt JS, Laravel, MySQL",
+		description: "premedicaDesc",
+		galleries: [
+			premedicaDashboardDoctor,
+			premedicaPartner,
+			premedicaNewQuestionnaire,
+			premedicaSendQuestionnaire,
+			premedicaAgenda,
+			premedicaDashboardAdmin,
+			premedicaUsers,
+			premedicaProfile,
+		],
+		features: [
+			"premedicaEntityFeature",
+			"premedicaAppointmenFeature",
+			"premedicaReportFeature",
+		],
+	},
+	{
+		id: 2,
+		title: "MP-TIME",
+		overview: mptimeRegister,
+		briefing: "mptimeBrief",
+		stack: "Vue JS, Symfony, MySQL",
+		description: "mptimeDesc",
+		galleries: [
+			mptimeLogin,
+			mptimeTimesheet,
+			mptimeProfile,
+			mptimeImport,
+			mptimeAdmin,
+			mptimeUsers,
+			mptimeCreateOrder,
+			mptimeCreateCompany,
+		],
+		features: [
+			"mptimeTimesheetFeature",
+			"mptimeTrackingFeature",
+			"mptimeCompanyFeature",
+		],
+	},
+	{
+		id: 3,
+		title: "INFISWAP",
+		overview: infiswapHome,
+		briefing: "infiswapBrief",
+		stack: "Nuxt, Laravel, MySQL",
+		description: "infiswapDesc",
+		website: "http://infiswap.be/",
+		galleries: [
+			infiswapLogin,
+			infiswapDashboardNurse,
+			infiswapCreateReplacement,
+			infiswapBinomial,
+			infiswapSetting,
+			infiswapDetailReplacement,
+			infiswapDashboardAdmin,
+			infiswapCrm,
+		],
+		features: [
+			"infiswapReplacementFeature",
+			"infiswapPartnershipFeature",
+			"infiswapNurseFeature",
+			"infiswapResponseFeature",
+		],
+	},
+	{
+		id: 4,
+		title: "INSTAGE",
+		overview: instageHome,
+		briefing: "instageBrief",
+		stack: "React, Django, MySQL",
+		description: "instageDesc",
+		github: "https://github.com/Tantely004/instage.git",
+		galleries: [
+			instageLogin,
+			instageDashboardIntern,
+			instageGenerateTheme,
+			instageInternship,
+			instageDashboardSupervisor,
+			instageFollowUp,
+			instageDashboardAdmin,
+			instageListUsers,
+		],
+		features: [
+			"instageInternshipFeature",
+			"instageTrackingProject",
+			"instageAiAssistant",
+		],
+	},
+	{
+		id: 5,
+		title: "CIRCUS",
+		overview: circusHome,
+		briefing: "circusBrief",
+		stack: "React, Laravel, PostgreSQL",
+		description: "circusDesc",
+		github: "https://github.com/NinoMichael/circus.git",
+		website: "https://circus-mg.vercel.app",
+		galleries: [
+			circusLogin,
+			circusAbout,
+			circusContact,
+			circusRegister,
+			circusListTrip,
+			circusProfilePassenger,
+			circusDashboardDriver,
+			circusSettingDriver,
+		],
+		features: ["circusBookingFeature", "circusTrackingFeature"],
+	},
+	{
+		id: 6,
+		title: "EVENTURE",
+		overview: eventureHome,
+		briefing: "eventureBrief",
+		stack: "React, Django, PostgreSQL",
+		description: "eventureDesc",
+		github: "https://github.com/NinoMichael/eventure.git",
+		galleries: [
+			eventureLogin,
+			eventureRegister,
+			eventureDashboard,
+			eventureProfile,
+			eventureDashboardAdmin,
+			eventureListAudience,
+			eventurePublish,
+			eventureChat,
+		],
+		features: [
+			"eventureEventOrganization",
+			"eventureEventParticipate",
+			"eventureEventTracking",
+		],
+	},
+	{
+		id: 7,
+		title: "OMEGA CONNECT",
+		overview: omegaHome,
+		briefing: "omegaBrief",
+		stack: "JavaScript, PHP",
+		description: "omegaDesc",
+		website: "https://www.omega-connect.com/",
+		galleries: [
+			omegaCollectData,
+			omegaContact,
+			omegaFicheProduct,
+			omegaAiValidator,
+			omegaRelaunchPhone,
+			omegaSeo,
+			omegaSupport,
+			omegaTypeProject,
+		],
+		features: ["omegaExternService", "omegaAiAssistance"],
+	},
+	{
+		id: 8,
+		title: "ESPRIT AUDIO",
+		overview: espritHome,
+		briefing: "espritBrief",
+		stack: "JavaScript, PHP",
+		description: "espritDesc",
+		website: "https://www.esprit-audio.fr/",
+		galleries: [
+			espritContact,
+			espritAbout,
+			espritAcoustics,
+			espritAlphaCable,
+			espritEsprit,
+			espritLisa,
+			espritProAccess,
+			espritReview,
+		],
+		features: ["espritCableSale", "espritEnhanceExp"],
+	},
 ];
 
 const designPortfolios = [
-    {
-        id: 1,
-        title: 'SKINOVA',
-        overview: skinovaHome1, 
-        briefing: 'skinovaBrief',
-        description: "skinovaDesc",
-        galleries: [
-            skinovaHome2,
-            skinovaHome3,
-            skinovaService1,
-            skinovaService2,
-            skinovaProduct1,
-            skinovaProduct2,
-            skinovaContact,
-        ],
-        features: [
-            'skinovaCatalog',
-            'skinovaCustomOrder',
-        ]
-    },
-    {
-        id: 2,
-        title: 'FAMCASH',
-        overview: famcashWelcome, 
-        briefing: 'famcashBrief',
-        description: "famcashDesc",
-        galleries: [
-            famcashLogin,
-            famcashDashboard,
-            famcashListTransaction,
-            famcashBudget,
-            famcashReport,
-            famcashBackup,
-            famcashSetting,
-            famcashNotification,
-        ],
-        features: [
-            'famcashExpenseFeature',
-            'famcashBudgetFeature',
-        ]
-    },
-    {
-        id: 3,
-        title: 'AFTRIP',
-        overview: aftripHome, 
-        briefing: 'aftripBrief',
-        description: "aftripDesc",
-        galleries: [
-            aftripError,
-            aftripEstablishment,
-            aftripInfoHotel,
-            aftripTour,
-            aftripBooking,
-            aftripDashboard,
-            aftripOrder,
-            aftripProfile,
-        ],
-        features: [
-            'aftripDirectory',
-            'aftripHotelBooking',
-            'aftripEcommerce',
-            'aftripTravel',
-        ]
-    }
-]
+	{
+		id: 1,
+		title: "SKINOVA",
+		overview: skinovaHome1,
+		briefing: "skinovaBrief",
+		description: "skinovaDesc",
+		galleries: [
+			skinovaHome2,
+			skinovaHome3,
+			skinovaService1,
+			skinovaService2,
+			skinovaProduct1,
+			skinovaProduct2,
+			skinovaContact,
+		],
+		features: ["skinovaCatalog", "skinovaCustomOrder"],
+	},
+	{
+		id: 2,
+		title: "FAMCASH",
+		overview: famcashWelcome,
+		briefing: "famcashBrief",
+		description: "famcashDesc",
+		galleries: [
+			famcashLogin,
+			famcashDashboard,
+			famcashListTransaction,
+			famcashBudget,
+			famcashReport,
+			famcashBackup,
+			famcashSetting,
+			famcashNotification,
+		],
+		features: ["famcashExpenseFeature", "famcashBudgetFeature"],
+	},
+	{
+		id: 3,
+		title: "AFTRIP",
+		overview: aftripHome,
+		briefing: "aftripBrief",
+		description: "aftripDesc",
+		galleries: [
+			aftripError,
+			aftripEstablishment,
+			aftripInfoHotel,
+			aftripTour,
+			aftripBooking,
+			aftripDashboard,
+			aftripOrder,
+			aftripProfile,
+		],
+		features: [
+			"aftripDirectory",
+			"aftripHotelBooking",
+			"aftripEcommerce",
+			"aftripTravel",
+		],
+	},
+];
 </script>
