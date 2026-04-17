@@ -33,6 +33,8 @@
             <img 
                 :src = "jerry" 
                 alt = "Jerry"
+                loading = "eager"
+                decoding = "sync"
                 class = "absolute z-0 top-28 left-1/4 min-[480px]:left-1/3 w-52 md:w-64 md:top-28 md:left-[60%] lg:top-24 lg:left-2/3 lg:w-80 2xl:top-32 2xl:left-[68%]"    
             >
         </div>

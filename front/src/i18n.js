@@ -23,6 +23,11 @@ const messages = {
 		mySkills: "MY SKILLS",
 		uiuxdesign: "UI/UX Design",
 		webapp: "Website",
+		talkovaBrief: "AI-powered job interview simulation platform",
+		talkovaDesc: "Talkova is an AI-powered simulation platform designed to help candidates better prepare for job interviews",
+		talkovaOralSimulation: "Real-time oral interview simulation",
+		talkovaContextGeneration: "Job context generated based on profile",
+		talkovaFeedback: "Analysis of responses & feedback",
 		premedicaBrief:
 			"AI-powered web application for managing medical appointments for healthcare facilities",
 		premedicaDesc:
@@ -111,20 +116,20 @@ const messages = {
 			"Participation in the development of an intuitive interface for a web platform",
 		periodFrontDeveloper1: "December 2024 - March 2025",
 		missionWebmaster:
-			"Participation in website maintenance & proposal of digital solution",
+			"Maintenance of five websites in PHP and PrestaShop, including the customization of the back office of one of the sites under PrestaShop.",
 		periodWebmaster: "April - June 2024",
 		projectOfficer: "IT Project officer",
 		periodProjectOfficer: "April - July 2023",
 		missionProjectOfficer:
-			"Participation in project development & model design",
+			"Design of a web radio project in Madagascar, accompanied by technical support for the internal team.",
 		webFullstack: "Full-stack Web Developer",
-		periodWebFullstack: "March 2025 - January 2026",
+		periodWebFullstack: "January 2025 - January 2026",
 		missionWebFullstack:
-			"Participation in the development of web applications and their monitoring on both the front-end and back-end sides",
+			"Development and maintenance of three complete web applications (front-end and back-end) using Vue.js and Laravel, in collaboration with the team for the functional design of the projects. Mentoring of web development interns.",
 		freelanceAgency: "Freelance agency",
 		periodFrontDeveloper2: "March - August 2024",
 		missionFrontDeveloper2:
-			"Participation in the development & design of intuitive interfaces",
+			"Design of interfaces and mockups with Figma for a website to be developed, followed by their web integration with Bootstrap.",
 		happyToDiscuss:
 			"I would be happy to discuss potential projects, collaborations or any other opportunities with you.",
 		fullname: "Name",
@@ -156,6 +161,11 @@ const messages = {
 		mySkills: "MES COMPÉTENCES",
 		uiuxdesign: "UI/UX Design",
 		webapp: "Site web",
+		talkovaBrief: "Plateforme de simulation d'entretien professionnel assisté par IA",
+		talkovaDesc: "Talkova est une plateforme de simulation assisté par IA en vue d'aider les candidats à se mieux préparer aux entretiens professionnels",
+		talkovaOralSimulation: "Simulation d'entretien en oral en temps réel",
+		talkovaContextGeneration: "Contexte d'emploi généré selon profil",
+		talkovaFeedback: "Analyse des réponses & feedback",
 		premedicaBrief:
 			"Application web intelligente de gestion de rendez-vous médical pour les établissements de santé",
 		premedicaDesc:
@@ -240,26 +250,22 @@ const messages = {
 			"Sortant en 3ème année au sein de l'Université ESMIA - Filière : Informatique",
 		bacc: "Baccalauréat",
 		baccDesc: "Obtention du diplome de baccalauréat en série C",
-		frontDeveloper: "Développeur Front-End",
 		frontDeveloperDesigner: "Développeur Front-End & Designer UI/UX",
-		missionFrontDeveloper1:
-			"Participation au développement d'interface intuitive pour une plateforme web",
-		periodFrontDeveloper1: "Décembre 2024 - Mars 2025",
 		missionWebmaster:
-			"Participation à la maintenance de site web & proposition de solution digitale",
+			"Maintenance de cinq sites web en PHP et PrestaShop, incluant la personnalisation du back-office d’un des sites sous PrestaShop.",
 		periodWebmaster: "Avril - Juin 2024",
 		projectOfficer: "Officier de projet IT",
 		periodProjectOfficer: "Avril - Juillet 2023",
 		missionProjectOfficer:
-			"Participation à l'élaboration de projet & conception de maquette",
+			"Conception d’un projet de webradio à Madagascar, accompagnée d’un support technique auprès de l’équipe interne.",
 		webFullstack: "Développeur Web Full-stack",
-		periodWebFullstack: "Mars 2025 - Janvier 2026",
+		periodWebFullstack: "Janvier 2025 - Janvier 2026",
 		missionWebFullstack:
-			"Participation au développement d'application web et de leur suivi tant du coté front-end que celui du back-end",
+			"Développement et maintenance de trois applications web complètes (front-end et back-end) avec Vue.js et Laravel, en collaboration avec l’équipe pour la conception fonctionnelle des projets. Accompagnement de stagiaires en développement web.",
 		freelanceAgency: "Agence freelance",
 		periodFrontDeveloper2: "Mars - Aout 2024",
 		missionFrontDeveloper2:
-			"Participation au développement & conception d'interfaces intuitives",
+			"Conception d’interfaces et de maquettes avec Figma pour un site à développer, suivie de leur intégration web avec Bootstrap.",
 		happyToDiscuss:
 			"Je serais ravi de discuter avec vous de projets potentiels, de collaborations ou de toute autre opportunité",
 		fullname: "Nom",

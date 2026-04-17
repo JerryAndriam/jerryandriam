@@ -55,6 +55,8 @@
 								>
 									<img
 										:src="portfolio.overview"
+										loading="lazy"
+										decoding="async"
 										class="transition-transform duration-300 ease-in-out group-hover:scale-105"
 									/>
 								</div>
@@ -169,7 +171,7 @@
 							'!bg-blue-700/40': !checked,
 						}"
 					>
-						<img :src="selectedPortfolio.overview" class="h-24 object-cover" />
+						<img :src="selectedPortfolio.overview" loading="lazy" decoding="async" class="h-24 object-cover" />
 					</div>
 
 					<div class="mt-6 grid grid-cols-3 sm:grid-cols-4 gap-4">
@@ -181,6 +183,8 @@
 						>
 							<img
 								:src="image"
+								loading="lazy"
+								decoding="async"
 								class="w-full h-20 sm:h-24 object-cover rounded shadow"
 							/>
 						</div>
@@ -269,6 +273,8 @@
 			<div class="flex justify-center">
 				<img
 					:src="selectedPortfolio.galleries[currentImage]"
+					loading="lazy"
+					decoding="async"
 					class="max-h-[50vh] object-contain"
 				/>
 			</div>
@@ -302,7 +308,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineAsyncComponent } from "vue";
 import { useI18n } from "vue-i18n";
 import Dialog from "primevue/dialog";
 import Button from "primevue/button";
@@ -311,6 +317,14 @@ import TabList from "primevue/tablist";
 import Tab from "primevue/tab";
 import TabPanels from "primevue/tabpanels";
 import TabPanel from "primevue/tabpanel";
+
+import talkovaHome from "../../assets/images/portfolio/talkova/home.png";
+import talkovaLogin from "../../assets/images/portfolio/talkova/login.png";
+import talkovaRegister1 from "../../assets/images/portfolio/talkova/register.png";
+import talkovaRegister2 from "../../assets/images/portfolio/talkova/register2.png";
+import talkovaDashboard from "../../assets/images/portfolio/talkova/dashboard.png";
+import talkovaContext from "../../assets/images/portfolio/talkova/context.png";
+import talkovaInterview from "../../assets/images/portfolio/talkova/interview.png";
 
 import premedicaHome from "../../assets/images/portfolio/premedica/home.png";
 import premedicaDashboardDoctor from "../../assets/images/portfolio/premedica/dashboard-doctor.png";
@@ -465,8 +479,29 @@ const handleCloseGalleryDialog = () => {
 };
 
 const websitePortfolios = [
-	{
+		{
 		id: 1,
+		title: "TALKOVA",
+		overview: talkovaHome,
+		briefing: "talkovaBrief",
+		stack: "React, Express, PostgreSQL",
+		description: "talkovaDesc",
+		galleries: [
+			talkovaLogin,
+			talkovaRegister1,
+			talkovaRegister2,
+			talkovaDashboard,
+			talkovaContext,
+			talkovaInterview,
+		],
+		features: [
+			"talkovaContextGeneration",
+			"talkovaOralSimulation",
+			"talkovaFeedback",
+		],
+	},
+	{
+		id: 2,
 		title: "PREMEDICA",
 		overview: premedicaHome,
 		briefing: "premedicaBrief",
@@ -489,7 +524,7 @@ const websitePortfolios = [
 		],
 	},
 	{
-		id: 2,
+		id: 3,
 		title: "MP-TIME",
 		overview: mptimeRegister,
 		briefing: "mptimeBrief",
@@ -512,7 +547,7 @@ const websitePortfolios = [
 		],
 	},
 	{
-		id: 3,
+		id: 4,
 		title: "INFISWAP",
 		overview: infiswapHome,
 		briefing: "infiswapBrief",
@@ -537,7 +572,7 @@ const websitePortfolios = [
 		],
 	},
 	{
-		id: 4,
+		id: 5,
 		title: "INSTAGE",
 		overview: instageHome,
 		briefing: "instageBrief",
@@ -561,7 +596,7 @@ const websitePortfolios = [
 		],
 	},
 	{
-		id: 5,
+		id: 6,
 		title: "CIRCUS",
 		overview: circusHome,
 		briefing: "circusBrief",
@@ -582,7 +617,7 @@ const websitePortfolios = [
 		features: ["circusBookingFeature", "circusTrackingFeature"],
 	},
 	{
-		id: 6,
+		id: 7,
 		title: "EVENTURE",
 		overview: eventureHome,
 		briefing: "eventureBrief",
@@ -606,7 +641,7 @@ const websitePortfolios = [
 		],
 	},
 	{
-		id: 7,
+		id: 8,
 		title: "OMEGA CONNECT",
 		overview: omegaHome,
 		briefing: "omegaBrief",
@@ -626,7 +661,7 @@ const websitePortfolios = [
 		features: ["omegaExternService", "omegaAiAssistance"],
 	},
 	{
-		id: 8,
+		id: 9,
 		title: "ESPRIT AUDIO",
 		overview: espritHome,
 		briefing: "espritBrief",

@@ -22,7 +22,10 @@
             >
                 <img 
                     :src="stack.logo"
+                    loading="lazy"
+                    decoding="async"
                     class="w-20 mx-auto"
+                    :alt="stack.techno"
                 >
                 <p class="mt-4">
                     {{ stack.techno }}

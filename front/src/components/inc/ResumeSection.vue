@@ -83,7 +83,7 @@
                                 />
                             </div>
 
-                            <p class="mt-8 lg:w-80">
+                            <p class="mt-8">
                                 {{ t(experience.mission) }}
                             </p>
 
@@ -135,7 +135,7 @@
                                 />
                             </div>
 
-                            <p class="mt-8 lg:w-80">
+                            <p class="mt-8 lg:w-full">
                                 {{ t(internship.mission) }}
                             </p>
 
@@ -233,14 +233,6 @@ const educations = [
 const internships = [
     {
         id: 1,
-        company: "MG-CONSULTING IT & ACT",
-        position: "frontDeveloper",
-        period: "periodFrontDeveloper1",
-        mission: "missionFrontDeveloper1",
-        projects: ['Infiswap'],
-    },
-    {
-        id: 2,
         company: "R@ndevTeam",
         position: "Webmaster",
         period: "periodWebmaster",
@@ -248,7 +240,7 @@ const internships = [
         projects: ['Omega-Connect', 'Esprit Audio'],
     },
     {
-        id: 3,
+        id: 2,
         company: "OFM Madagascar",
         position: "projectOfficer",
         period: "periodProjectOfficer",
@@ -263,7 +255,7 @@ const experiences = [
         position: "webFullstack",
         period: "periodWebFullstack",
         mission: "missionWebFullstack",
-        projects: ['Mp-Time', 'Infiswap'],
+        projects: ['Premedica', 'Mp-Time', 'Infiswap'],
     },
     {
         id: 2,

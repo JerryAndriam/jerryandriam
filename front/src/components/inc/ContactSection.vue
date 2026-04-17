@@ -25,6 +25,8 @@
                 <div>
                     <img 
                         :src="handshake"
+                        loading="lazy"
+                        decoding="async"
                         class="rounded-lg"
                     >
                     <div class="hidden lg:block lg:mt-8">
