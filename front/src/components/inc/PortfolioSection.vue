@@ -567,7 +567,7 @@ const websitePortfolios = [
 		briefing: "circusBrief",
 		stack: "React, Laravel, PostgreSQL",
 		description: "circusDesc",
-		github: "https://github.com/NinoMichael/circus.git",
+		github: "https://github.com/JerryAndriam/circus.git",
 		website: "https://circus-mg.vercel.app",
 		galleries: [
 			circusLogin,
@@ -588,7 +588,7 @@ const websitePortfolios = [
 		briefing: "eventureBrief",
 		stack: "React, Django, PostgreSQL",
 		description: "eventureDesc",
-		github: "https://github.com/NinoMichael/eventure.git",
+		github: "https://github.com/JerryAndriam/eventure.git",
 		galleries: [
 			eventureLogin,
 			eventureRegister,
